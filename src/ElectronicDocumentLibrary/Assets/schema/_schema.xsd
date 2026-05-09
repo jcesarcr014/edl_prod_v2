@@ -2,7 +2,7 @@
 <xs:schema xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:catCFDI="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" xmlns:tdCFDI="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" targetNamespace="http://www.sat.gob.mx/cfd/4" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" schemaLocation="cfdi_catalogo40_lite.xsd"/>
 	<xs:import namespace="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" schemaLocation="cfdi_tipos40.xsd"/>
-	<xs:import namespace='http://www.sat.gob.mx/hidrocarburospetroliferos' schemaLocation='hidrocarburospetroliferos10.xsd'/><xs:element name="Comprobante">
+	<xs:element name="Comprobante">
 		<xs:annotation>
 			<xs:documentation>Estándar de Comprobante Fiscal Digital por Internet.</xs:documentation>
 		</xs:annotation>
