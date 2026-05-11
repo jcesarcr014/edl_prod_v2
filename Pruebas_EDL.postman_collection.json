@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "b968a33e-b2d4-4f51-b8f9-4d6d6a5961e6",
+		"name": "Pruebas EDL API PHP 8.3",
+		"description": "Colección de pruebas para la API de Facturación EDL migrada a PHP 8.3. Incluye soporte para CFDI 4.0 estándar e Hidrocarburos Petrolíferos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Timbrar CFDI 4.0 (original)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer Darkbyte234327*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"max_id\": 1,\n    \"comprobante\": {\n        \"folio\": \"1\",\n        \"serie\": \"VV\",\n        \"formaPago\": \"01\",\n        \"metodoPago\": \"PUE\",\n        \"moneda\": \"MXN\",\n        \"lugarExpedicion\": \"77505\",\n        \"tipoComprobante\": \"I\",\n        \"subTotal\": 250,\n        \"total\": 290,\n        \"exportacion\": \"01\",\n        \"cfdiRelacionados\": []\n    },\n    \"emisor\": {\n        \"rfc\": \"EKU9003173C9\",\n        \"nombre\": \"ESCUELA KEMPER URATE\",\n        \"regimenFiscal\": \"601\"\n    },\n    \"receptor\": {\n        \"rfc\": \"URE180429TM6\",\n        \"nombre\": \"UNIVERSIDAD ROBOTICA ESPAÑOLA\",\n        \"regimenFiscalReceptor\": \"601\",\n        \"usoCfdi\": \"G03\",\n        \"domicilioFiscalReceptor\": \"77505\"\n    },\n    \"conceptos\": [\n        {\n            \"cantidad\": 1,\n            \"claveProductoServicio\": \"80141623\",\n            \"claveUnidad\": \"E48\",\n            \"unidad\": \"Servicio\",\n            \"descripcion\": \"Venta de 5 vales de $50.00. Folios: 255010011-255010015.\",\n            \"valorUnitario\": 250,\n            \"importe\": 250,\n            \"numeroIdentificacion\": \"SKU-1\",\n            \"objetoImpuesto\": \"02\",\n            \"cuentasPrediales\": [],\n            \"impuestos\": {\n                \"traslados\": [\n                    {\n                        \"base\": 250,\n                        \"importe\": 40,\n                        \"impuesto\": \"002\",\n                        \"tipoFactor\": \"Tasa\",\n                        \"tasaCuota\": 0.16\n                    }\n                ]\n            }\n        }\n    ],\n    \"impuestos\": {\n        \"traslados\": [\n            {\n                \"base\": 250,\n                \"importe\": 40,\n                \"impuesto\": \"002\",\n                \"tipoFactor\": \"Tasa\",\n                \"tasaCuota\": 0.16\n            }\n        ],\n        \"totalTraslados\": 40\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/timbrar_cfdi40.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"timbrar_cfdi40.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Timbrar Hidrocarburos (con Hidrocarburos)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer Darkbyte234327*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"max_id\": 10,\n    \"comprobante\": {\n        \"folio\": \"40\",\n        \"serie\": \"HYDRO\",\n        \"formaPago\": \"04\",\n        \"metodoPago\": \"PUE\",\n        \"moneda\": \"MXN\",\n        \"lugarExpedicion\": \"89400\",\n        \"tipoComprobante\": \"I\",\n        \"subTotal\": 763.29,\n        \"total\": 881.94,\n        \"exportacion\": \"01\"\n    },\n    \"emisor\": {\n        \"rfc\": \"EKU9003173C9\",\n        \"nombre\": \"ESCUELA KEMPER URATE\",\n        \"regimenFiscal\": \"601\"\n    },\n    \"receptor\": {\n        \"rfc\": \"URE180429TM6\",\n        \"nombre\": \"UNIVERSIDAD ROBOTICA ESPAÑOLA\",\n        \"regimenFiscalReceptor\": \"601\",\n        \"usoCfdi\": \"G03\",\n        \"domicilioFiscalReceptor\": \"07300\"\n    },\n    \"conceptos\": [\n        {\n            \"cantidad\": 36.7628,\n            \"claveProductoServicio\": \"15101514\",\n            \"claveUnidad\": \"LTR\",\n            \"unidad\": \"Litros\",\n            \"descripcion\": \"MAGNA - Permiso CRE PL/6598/EXP/ES/2015\",\n            \"valorUnitario\": 20.7626,\n            \"importe\": 763.29,\n            \"numeroIdentificacion\": \"PL/6598/EXP/ES/2015-4003339\",\n            \"objetoImpuesto\": \"02\",\n            \"complemento_hidrocarburos\": {\n                \"version\": \"1.0\",\n                \"tipoPermiso\": \"PER11\",\n                \"numeroPermiso\": \"PL/6598/EXP/ES/2015\",\n                \"claveHyP\": \"15101514\",\n                \"subProductoHyP\": \"SP16\"\n            },\n            \"impuestos\": {\n                \"traslados\": [\n                    {\n                        \"base\": 741.55,\n                        \"importe\": 118.65,\n                        \"impuesto\": \"002\",\n                        \"tipoFactor\": \"Tasa\",\n                        \"tasaCuota\": 0.16\n                    }\n                ]\n            }\n        }\n    ],\n    \"impuestos\": {\n        \"traslados\": [\n            {\n                \"base\": 741.55,\n                \"importe\": 118.65,\n                \"impuesto\": \"002\",\n                \"tipoFactor\": \"Tasa\",\n                \"tasaCuota\": 0.16\n            }\n        ],\n        \"totalTraslados\": 118.65\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/timbrar_hidrocarburos.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"timbrar_hidrocarburos.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Validar CFDI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer Darkbyte234327*",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rfc_emisor\": \"EKU9003173C9\",\n    \"rfc_receptor\": \"URE180429TM6\",\n    \"total\": \"290.00\",\n    \"uuid\": \"UUID-DE-LA-RESPUESTA\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/validar_cfdi.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"validar_cfdi.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
