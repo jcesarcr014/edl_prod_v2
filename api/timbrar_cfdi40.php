@@ -14,7 +14,7 @@ define('CERT_DIR', __DIR__ . '/../certificados/');
 define('PASSWORD_FILE', __DIR__ . '/../config/passwords.ini');
 
 // define('RFC_INTEGRADOR', 'SADR850924MG0');
-define('ID_INTEGRADOR', '1c6267bd-979d-4efb-890e-aab388ac6b7b'); // ID DE PRUEBAS 
+define('ID_INTEGRADOR', '22e845b7-aa15-4929-9abd-6dc3004424f8');
 
 require_once __DIR__ . '/security.php';
 require_once __DIR__ . '/../vendor/autoload.php';
