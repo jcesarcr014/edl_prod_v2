@@ -105,6 +105,41 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "4. Timbrar Recibo de Pago 2.0",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer Darkbyte234327*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"max_id\": 1,\n    \"emisor\": {\n        \"rfc\": \"EKU9003173C9\",\n        \"nombre\": \"ESCUELA KEMPER URATE\",\n        \"regimenFiscal\": \"601\"\n    },\n    \"receptor\": {\n        \"rfc\": \"URE180429TM6\",\n        \"nombre\": \"UNIVERSIDAD ROBOTICA ESPAÑOLA\",\n        \"regimenFiscalReceptor\": \"601\",\n        \"domicilioFiscalReceptor\": \"77505\",\n        \"usoCfdi\": \"CP01\"\n    },\n    \"comprobante\": {\n        \"serie\": \"P\",\n        \"folio\": \"100\",\n        \"lugarExpedicion\": \"77505\"\n    },\n    \"totales\": {\n        \"totalRetencionesIva\": 0.00,\n        \"totalRetencionesIsr\": 0.00,\n        \"totalRetencionesIeps\": 0.00,\n        \"totalTrasladosBaseIva16\": 1000.00,\n        \"totalTrasladosImpuestoIva16\": 160.00,\n        \"totalTrasladosBaseIva8\": 0.00,\n        \"totalTrasladosImpuestoIva8\": 0.00,\n        \"totalTrasladosBaseIva0\": 0.00,\n        \"totalTrasladosImpuestoIva0\": 0.00,\n        \"totalTrasladosBaseIvaExento\": 0.00,\n        \"montoTotalPagos\": 1160.00\n    },\n    \"pagos\": [\n        {\n            \"fechaPago\": \"2026-08-04T12:00:00\",\n            \"formaPago\": \"03\",\n            \"moneda\": \"MXN\",\n            \"monto\": 1160.00,\n            \"tipoCambio\": 1,\n            \"rfcEmisorCuentaOrdenante\": \"HMI950125KG8\",\n            \"nombreBancoOrdenanteExtrajero\": \"Santander\",\n            \"cuentaOrdenante\": \"015680644065416681\",\n            \"rfcEmisorCuentaBeneficiario\": \"AAA010101AAA\",\n            \"cuentaBeneficiario\": \"021190030551700271\",\n            \"documentosRelacionados\": [\n                {\n                    \"idDocumento\": \"222172B4-7330-4F3A-9E1A-B3FA29E20184\",\n                    \"serie\": \"F\",\n                    \"folio\": \"1968\",\n                    \"moneda\": \"MXN\",\n                    \"equivalencia\": 1,\n                    \"numeroParcialidad\": 1,\n                    \"importeSaldoAnterior\": 1160.00,\n                    \"importePagado\": 1160.00,\n                    \"importeSaldoInsoluto\": 0.00,\n                    \"objetoImpuesto\": \"02\",\n                    \"impuestos\": {\n                        \"traslados\": [\n                            {\n                                \"base\": 1000.00,\n                                \"impuesto\": \"002\",\n                                \"tipoFactor\": \"Tasa\",\n                                \"tasaCuota\": 0.160000,\n                                \"importe\": 160.00\n                            }\n                        ]\n                    }\n                }\n            ],\n            \"impuestos\": {\n                \"traslados\": [\n                    {\n                        \"base\": 1000.00,\n                        \"impuesto\": \"002\",\n                        \"tipoFactor\": \"Tasa\",\n                        \"tasaCuota\": 0.160000,\n                        \"importe\": 160.00\n                    }\n                ]\n            }\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/timbrar_pago20.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"timbrar_pago20.php"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
