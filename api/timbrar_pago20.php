@@ -50,6 +50,7 @@ try {
             'pagos20_catalogo.xsd' => __DIR__ . '/pagos20_catalogo.xsd',
             'pagos20_lite.xsd' => __DIR__ . '/pagos20_lite.xsd',
             'cfdi_catalogo40.xsd' => __DIR__ . '/cfdi_catalogo40.xsd',
+            'cfdi_catalogo40_lite.xsd' => __DIR__ . '/cfdi_catalogo40_lite.xsd',
             'cfdi_tipos40.xsd' => __DIR__ . '/cfdi_tipos40.xsd',
         ];
         $lowerFilename = strtolower($filename);
