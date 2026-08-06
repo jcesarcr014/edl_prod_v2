@@ -28,16 +28,18 @@ use Facturando\ElectronicDocumentLibrary\Document\ElectronicDocument;
 use Facturando\ElectronicDocumentLibrary\Base\Types\Complemento;
 
 // --- VALIDACIÓN ---
-$token = getBearerToken();
-if ($token !== SECRET_API_TOKEN) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Acceso no autorizado.']);
-    exit();
-}
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['error' => 'Método no permitido.']);
-    exit();
+if (php_sapi_name() !== 'cli') {
+    $token = getBearerToken();
+    if ($token !== SECRET_API_TOKEN) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Acceso no autorizado.']);
+        exit();
+    }
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        echo json_encode(['error' => 'Método no permitido.']);
+        exit();
+    }
 }
 
 // --- LÓGICA TIMBRADO PAGO 2.0 ---
@@ -278,6 +280,7 @@ try {
                             $trasladoDoc->Impuesto->Value = $tr['impuesto'];
                             $trasladoDoc->TipoFactor->Value = $tr['tipoFactor'];
                             $trasladoDoc->TasaCuota->Value = $tr['tasaCuota'];
+                            $trasladoDoc->TasaCuota->Decimals = 6;
                             $trasladoDoc->Importe->Value = $tr['importe'];
                         }
                     }
@@ -311,6 +314,7 @@ try {
                     $trasladoPago->Impuesto->Value = $trP['impuesto'];
                     $trasladoPago->TipoFactor->Value = $trP['tipoFactor'];
                     $trasladoPago->TasaCuota->Value = $trP['tasaCuota'];
+                    $trasladoPago->TasaCuota->Decimals = 6;
                     $trasladoPago->Importe->Value = $trP['importe'];
                 }
             }
