@@ -118,6 +118,17 @@ try {
         }
     }
 
+    // --- Informacion Global (Publico en General) ---
+    if (isset($data['informacionGlobal'])) {
+        $electronicDocument->Data->InformacionGlobal->Periodicidad->Value = $data['informacionGlobal']['periodicidad'];
+        $electronicDocument->Data->InformacionGlobal->Meses->Value = $data['informacionGlobal']['meses'];
+        $electronicDocument->Data->InformacionGlobal->Anio->Value = (int)$data['informacionGlobal']['anio'];
+    } elseif (strtoupper($data['receptor']['rfc'] ?? '') === 'XAXX010101000') {
+        $electronicDocument->Data->InformacionGlobal->Periodicidad->Value = '01';
+        $electronicDocument->Data->InformacionGlobal->Meses->Value = date('m');
+        $electronicDocument->Data->InformacionGlobal->Anio->Value = (int)date('Y');
+    }
+
     // --- Emisor ---
     $electronicDocument->Data->Emisor->Rfc->Value = $data['emisor']['rfc'];
     $electronicDocument->Data->Emisor->Nombre->Value = $data['emisor']['nombre'];
